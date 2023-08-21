@@ -1,0 +1,41 @@
+<template>
+<lightning-button label="getAccDetails" variant="Brand" onclick={handleclick}></lightning-button>
+<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+    <tr>
+        <td><b>Name</b></td>
+    </tr>
+
+    
+    <template for:each={records} for:item="acc">
+        <tr key={acc.Id}>
+            <td>
+                {acc.Name}
+                
+            </td>
+            
+           
+            <td>
+            {acc.Id}
+        </td>
+        <td>
+            <template if:true={acc.Industry}>
+                samiksha
+            </template>
+            <template if:false={acc.Industry}>
+                
+            </template>
+            
+        </td>
+            <td>
+                {acc.Industry}
+            </td>
+
+        </tr>
+
+
+    </template>
+
+
+</table>
+
+</template>

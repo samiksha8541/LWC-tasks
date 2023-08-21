@@ -1,0 +1,12 @@
+<template>
+
+    <lightning-card title="New Contact" icon-name="standard:contact">
+        <div class="slds-p-around_x-small">
+            <div class="test-id__section-header-container slds-section__title slds-theme--shade">Contact Information</div>
+    <lightning-record-form object-api-name="Contact"
+        fields={fields} onsuccess={handleSuccess} columns="2">
+    </lightning-record-form>
+</div>
+</lightning-card>
+
+</template>

@@ -1,0 +1,15 @@
+<template>
+
+    <lightning-card title="Parent Lwc">
+
+        <lightning-input class="slds-p-horizontal_small" label="set counter" type="number" min="0" max="10000" value={startCounter} onchange={handlestartChange}>
+
+
+
+        </lightning-input>
+
+        <!--Child Component Calling-->
+        <c-parent-to-child-child counter = {startCounter}></c-parent-to-child-child>
+    </lightning-card>
+    
+</template>

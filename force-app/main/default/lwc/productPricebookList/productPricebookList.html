@@ -1,0 +1,112 @@
+<template>
+<template if:true={showModalone}>
+<lightning-modal-header label="Price Books"></lightning-modal-header>
+<div class="modal">
+<lightning-modal-body> 
+<p>Select a Price Book to associate with this opportunity. You can add products only from the Price Book you associate with this opportunity. Changing the Price Book deletes all products from the opportunity.</p>
+<lightning-combobox
+        name="Price Book"
+        value={selPriceBook}
+        options={priceBookList}
+        onchange={handleChange} ></lightning-combobox>
+</lightning-modal-body>
+</div>
+<lightning-modal-footer>
+    <lightning-button label="Next" onclick={nextClick}></lightning-button>
+</lightning-modal-footer>
+</template>
+<template if:true={showModaltwo}>
+<lightning-modal-header label="Add Products"
+>
+Price Book : {selPriceBook}
+</lightning-modal-header>
+<p class="slds-p-horizontal_small">
+    <lightning-input  type="search" class="slds-m-bottom_small" placeholder="Search Products..." onchange={handleSearch} value={accountName}></lightning-input>
+    </p>
+    <lightning-card>
+        <div style="height: 300px;">
+            <table>
+                <thead>
+                    <th><lightning-input type="checkbox" label="" name="input1"></lightning-input></th>
+                    <th>Product Name</th>
+                    <th>Product Code</th>
+                    <th>List Price</th>
+                    <th>Product Description</th>
+                    <th>Product Family</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </thead>
+                <tbody>
+                    
+                    <template if:true={productList} for:each={productList} for:item="prod">
+                      <tr key= {prod.id}>
+                            <td><lightning-input type="checkbox" label="" name="input1"></lightning-input></td>
+                            
+                            <td>{prod.Product2.Name}</td>
+                            <td>{prod.Product2.ProductCode}</td>
+                            <td>
+                                <lightning-record-edit-form
+                                object-api-name="PricebookEntry">
+                               
+                            
+                                <lightning-messages></lightning-messages>
+                                <lightning-input-field
+                                    field-name="UnitPrice"
+                                    readonly="true"
+                                ></lightning-input-field>
+                                <lightning-button
+                                type="submit"
+                                label="Update"
+                                class="slds-m-top_small"
+                                variant="brand"
+                            ></lightning-button>
+                                
+                            </lightning-record-edit-form>
+                            </td>
+
+
+                            <!--<td>{prod.UnitPrice}</td>-->
+                            <td>{prod.Product2.Description}</td>
+                            <td>{prod.Product2.Family}</td> 
+                            <td>
+                    <lightning-record-edit-form object-api-name="PricebookEntry">
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field field-name="Quantity__c">
+                        </lightning-input-field>
+                        <lightning-button
+                        type="submit"
+                        label="submit"
+                        class="slds-m-top_small"
+                        variant="brand"
+                        ></lightning-button>
+                        </lightning-record-edit-form>
+                       
+
+                                </td>
+                            <!--<td>{prod.Quantity__c}</td>-->
+                            <td>{prod.Total_Price__c}</td>
+
+                            
+                        </tr>
+                    </template>
+
+                    <!--<template if:true={productList}>
+                        <lightning-datatable
+                        key-field="id"
+                        data={productList}
+                        columns={columnsdata}
+                        onsave={saveHandleAction}
+                            draft-values={fldsItemValues} 
+                            hide-checkbox-column 
+                            show-row-number-column>
+                </lightning-datatable>
+                </template>-->
+                </tbody>
+            </table> 
+        </div>
+        <lightning-modal-footer>
+            <lightning-button label="Previous" onclick={PreviousClick}></lightning-button>
+        </lightning-modal-footer>
+    </lightning-card>
+</template>
+</template>
