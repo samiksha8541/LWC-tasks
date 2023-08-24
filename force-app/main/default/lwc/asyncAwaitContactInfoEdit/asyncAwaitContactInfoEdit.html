@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Contact Information">
+        <div class="slds-m-around_medium">
+            <lightning-input label="First Name" value={firstName} disabled={isDisabled}></lightning-input>
+            <lightning-input label="Last Name" value={lastName} disabled={isDisabled}></lightning-input>
+            <lightning-input label="Email" value={email} disabled={isDisabled}></lightning-input>
+            <lightning-button label="Enable Editing" onclick={toggleEdit} class="slds-m-top_medium" variant="brand"></lightning-button>
+            <lightning-button label="Save" onclick={saveContact} class="slds-m-top_medium" variant="brand"></lightning-button>
+        </div>
+    </lightning-card>
+</template>
