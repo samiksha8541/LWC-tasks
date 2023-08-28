@@ -10,7 +10,7 @@ public class AccountDetailExtension {
             account = [SELECT Start_Date__c, End_Date__c, Name FROM Account WHERE Id = :accountId];
             startDate = account.Start_Date__c;
             endDate = account.End_Date__c;
-            accountName = account.Name;
+            accountName = account.Name;    
         }
     }
 }
